@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>TG Login Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body { font-family: system-ui, sans-serif; padding: 24px; }
+    pre { background: #f6f7f8; padding: 12px; border-radius: 8px; overflow: auto; }
+  </style>
+</head>
+<body>
+  <h1>Telegram Login — локальная проверка</h1>
+
+  <div id="result">Нажмите кнопку и пройдите авторизацию…</div>
+
+  <script>
+    // Вызывается виджетом после успешной авторизации
+    function handleTelegramAuth(user) {
+      document.getElementById('result').innerHTML =
+        '<h2>Данные от Telegram</h2><pre>' +
+        JSON.stringify(user, null, 2) + '</pre>';
+      console.log('Telegram user:', user);
+    }
+  </script>
+
+  <script async src="https://telegram.org/js/telegram-widget.js?22"
+          data-telegram-login="blah_test88_bot"
+          data-size="large"
+          data-userpic="false"
+          data-request-access="write"
+          data-lang="ru"
+          data-onauth="handleTelegramAuth(user)">
+  </script>
+</body>
+</html>
